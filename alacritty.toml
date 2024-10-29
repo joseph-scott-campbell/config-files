@@ -48,5 +48,5 @@ style = "Regular"
 action = "ToggleFullscreen"
 key = "F11"
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/tmux"
