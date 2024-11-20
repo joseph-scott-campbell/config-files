@@ -85,15 +85,6 @@
     	tmux
     	git
  
-        # general productivity
-        chromium
-        nerdfonts
-        signal-desktop
-        
-        # gaming
-        discord
-        steam
-
         # misc
         xclip # allows for cli interaction with clipboard
         xsel
@@ -102,6 +93,9 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+    
+  # Install steam
+  programs.steam.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
