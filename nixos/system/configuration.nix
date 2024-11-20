@@ -40,6 +40,21 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia = {
+    #enabling modesetting
+    modesetting.enable = true;
+
+    # turning off experiemental power management features
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+
+    open = false; # we want the proprietary one
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
@@ -74,21 +89,11 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  # All packages are coming from home-manager
   users.users.user = {
     isNormalUser = true;
     description = "user";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    	# development
-        neovim
-    	alacritty
-    	tmux
-    	git
- 
-        # misc
-        xclip # allows for cli interaction with clipboard
-        xsel
-    ];
   };
 
   # Install firefox.
@@ -108,25 +113,6 @@
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
