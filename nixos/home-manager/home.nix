@@ -19,9 +19,9 @@
     '')
 
     # development
-    # NOTE: very basic stuff like git and vim are in system-wide config
     pkgs.alacritty
     pkgs.tmux
+    pkgs.neovim
 
     # general productivity
     pkgs.chromium
