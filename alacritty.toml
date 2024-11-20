@@ -49,4 +49,4 @@ action = "ToggleFullscreen"
 key = "F11"
 
 [terminal.shell]
-program = "/usr/bin/tmux"
+program = "tmux"

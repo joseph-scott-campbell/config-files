@@ -50,6 +50,7 @@
     
     ".config/alacritty.toml".source = ../../alacritty.toml;
     ".config/nvim/init.vim".source = ../../nvim/init.vim;
+    ".config/tmux.conf".source = ../../tmux/tmux.conf;
 
     # setup vim plug for neovim
     # user will still have to <Prefix> + I on first load
@@ -57,6 +58,13 @@
     ".local/share/nvim/site/autoload/plug.vim".source = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
         sha256 = "1nywzjd9nfr7sqqbdi69wza305q3vp26i0390j1884wdz6awid10";
+    };
+
+    ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
+        owner = "tmux-plugins";
+        repo = "tpm";
+        rev = "master";
+        sha256 = "01ribl326n6n0qcq68a8pllbrz6mgw55kxhf9mjdc5vw01zjcvw5";
     };
 
     # # You can also set the file content immediately.
@@ -70,6 +78,12 @@
   # vim plug for neovim
   home.sessionVariables = {
      EDITOR = "nvim";
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "Scott Campbell";
+    userEmail = "scott@josephscottcampbell.com";
   };
 
   # Let Home Manager install and manage itself.
