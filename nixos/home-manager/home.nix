@@ -78,12 +78,18 @@
   # vim plug for neovim
   home.sessionVariables = {
      EDITOR = "nvim";
+     MANPAGER = "nvim +Man!";
+     TEST = "test";
   };
 
   programs.git = {
     enable = true;
     userName = "Scott Campbell";
     userEmail = "scott@josephscottcampbell.com";
+  };
+
+  programs.bash = {
+    enable = true;
   };
 
   # Let Home Manager install and manage itself.
