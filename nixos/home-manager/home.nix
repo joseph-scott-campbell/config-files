@@ -30,7 +30,7 @@
     pkgs.signal-desktop
     
     # misc
-    pkgs.nerdfonts
+    pkgs.nerd-fonts.agave
   ];
 
   programs = {
