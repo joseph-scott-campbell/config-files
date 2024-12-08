@@ -21,6 +21,7 @@
     # development
     pkgs.alacritty
     pkgs.tmux
+    pkgs.ripgrep
 
     # general productivity
     pkgs.chromium
@@ -28,10 +29,8 @@
     # chat applications
     pkgs.discord
     pkgs.signal-desktop
-    
-    # misc
-    pkgs.nerd-fonts.agave
   ];
+
 
   programs = {
     git = {
@@ -64,7 +63,7 @@
     # ".screenrc".source = dotfiles/screenrc;
     
     ".config/alacritty.toml".source = ../../alacritty.toml;
-    ".config/nvim/init.vim".source = ../../nvim/init.vim;
+    ".config/nvim/init.lua".source = ../../nvim/init.lua;
     ".config/tmux.conf".source = ../../tmux/tmux.conf;
 
     # setup vim plug for neovim

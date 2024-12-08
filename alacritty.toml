@@ -41,7 +41,7 @@ family = "Agave Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "Agave Nerd Font"
+family = "Agave Nerd Font Mono"
 style = "Regular"
 
 [[keyboard.bindings]]

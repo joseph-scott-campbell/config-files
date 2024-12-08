@@ -112,6 +112,11 @@
   #  wget
   ];
 
+  fonts.fontDir.enable = true;
+  fonts.packages = [
+  	pkgs.nerd-fonts.agave
+  ];
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # This value determines the NixOS release from which the default
