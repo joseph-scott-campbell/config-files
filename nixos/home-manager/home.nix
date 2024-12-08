@@ -21,7 +21,6 @@
     # development
     pkgs.alacritty
     pkgs.tmux
-    pkgs.neovim
 
     # general productivity
     pkgs.chromium
@@ -32,13 +31,29 @@
     
     # misc
     pkgs.nerdfonts
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
   ];
+
+  programs = {
+    git = {
+      enable = true;
+      userName = "Scott Campbell";
+      userEmail = "scott@josephscottcampbell.com";
+    };
+  
+    bash = {
+      enable = true;
+    };
+
+    neovim = {
+        # not installing plugins through this section because I want to keep
+        # my vim config distro agnostic
+        enable = true;
+        defaultEditor = true;
+        viAlias = true;
+        vimAlias = true;
+    };
+  };
+
 
  # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -53,8 +68,9 @@
     ".config/tmux.conf".source = ../../tmux/tmux.conf;
 
     # setup vim plug for neovim
-    # user will still have to <Prefix> + I on first load
-    ".local/share/nvim/site/autoload/plug.vim".text = "";
+    # user will still have to run :PlugInstall on first load
+    # using vim plug instead of builtin nix because I want to keep my config
+    # platform agnostic
     ".local/share/nvim/site/autoload/plug.vim".source = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
         sha256 = "1nywzjd9nfr7sqqbdi69wza305q3vp26i0390j1884wdz6awid10";
@@ -66,12 +82,6 @@
         rev = "master";
         sha256 = "01ribl326n6n0qcq68a8pllbrz6mgw55kxhf9mjdc5vw01zjcvw5";
     };
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
   };
 
   # setup various plugin managers
@@ -79,17 +89,6 @@
   home.sessionVariables = {
      EDITOR = "nvim";
      MANPAGER = "nvim +Man!";
-     TEST = "test";
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "Scott Campbell";
-    userEmail = "scott@josephscottcampbell.com";
-  };
-
-  programs.bash = {
-    enable = true;
   };
 
   # Let Home Manager install and manage itself.
