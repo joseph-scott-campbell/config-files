@@ -1,3 +1,49 @@
+-- Set encoding to UTF-8
+vim.opt.encoding = "utf-8"
+
+-- Enable line numbers
+vim.opt.number = true
+
+-- Enable syntax highlighting
+vim.cmd("syntax enable")
+
+-- Use the system clipboard for copy/paste operations
+vim.opt.clipboard:append("unnamedplus")
+
+-- Keep 8 lines visible above and below the cursor when scrolling
+vim.opt.scrolloff = 8
+
+-- Allow backspacing over indentation, end of line, and start of insert
+vim.opt.backspace = { "indent", "eol", "start" }
+
+-- Set the color column at column 80
+vim.opt.colorcolumn = "80"
+
+-- Make max width of line 80 columns
+vim.opt.textwidth = 80
+
+-- Set tab settings
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+
+-- Enable line wrapping and break lines at word boundaries
+vim.opt.wrap = true
+vim.opt.linebreak = true
+
+-- Convert tabs to spaces
+vim.opt.expandtab = true
+
+-- Enable automatic indentation
+vim.opt.autoindent = true
+
+-- Set the file format to Unix (LF line endings)
+vim.opt.fileformat = "unix"
+
+-- Enable 24-bit RGB color in the terminal
+vim.opt.termguicolors = true
+
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -20,7 +66,8 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-  
+
+
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
@@ -39,6 +86,9 @@ require("lazy").setup({
 })
 
 vim.cmd[[colorscheme tokyonight-night]]
+
+
+-- Keybinds
 vim.keymap.set('n', '<leader>]', '<cmd>bn<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>[', '<cmd>bp<CR>', { noremap = true, silent = true })
 

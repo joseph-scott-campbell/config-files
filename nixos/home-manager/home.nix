@@ -66,15 +66,6 @@
     ".config/nvim/init.lua".source = ../../nvim/init.lua;
     ".config/tmux.conf".source = ../../tmux/tmux.conf;
 
-    # setup vim plug for neovim
-    # user will still have to run :PlugInstall on first load
-    # using vim plug instead of builtin nix because I want to keep my config
-    # platform agnostic
-    ".local/share/nvim/site/autoload/plug.vim".source = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
-        sha256 = "1nywzjd9nfr7sqqbdi69wza305q3vp26i0390j1884wdz6awid10";
-    };
-
     ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
         owner = "tmux-plugins";
         repo = "tpm";
