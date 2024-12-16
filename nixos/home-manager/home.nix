@@ -23,6 +23,7 @@
     pkgs.tmux
     pkgs.ripgrep
     pkgs.file
+    pkgs.parallel
 
     # general productivity
     pkgs.chromium
