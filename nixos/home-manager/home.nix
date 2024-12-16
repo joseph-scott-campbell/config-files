@@ -22,6 +22,7 @@
     pkgs.alacritty
     pkgs.tmux
     pkgs.ripgrep
+    pkgs.file
 
     # general productivity
     pkgs.chromium
@@ -29,6 +30,10 @@
     # chat applications
     pkgs.discord
     pkgs.signal-desktop
+    
+    # misc
+    pkgs.keymapp
+    pkgs.flameshot
   ];
 
 
