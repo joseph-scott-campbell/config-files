@@ -74,8 +74,7 @@ require("lazy").setup({
         'nvim-lua/plenary.nvim',
         'nvim-telescope/telescope.nvim',
         'folke/tokyonight.nvim',
-	'christoomey/vim-tmux-navigator',
-        'dense-analysis/ale'
+    	'christoomey/vim-tmux-navigator',
         -- add your plugins here
     },
     -- Configure any other settings here. See the documentation for more details.
