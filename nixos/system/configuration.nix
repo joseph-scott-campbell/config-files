@@ -11,11 +11,16 @@
     ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/nvme0n1";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.initrd.luks.devices."luks-2e2e70f9-a925-467c-8b4a-564eb4ae19d1".device = "/dev/disk/by-uuid/2e2e70f9-a925-467c-8b4a-564eb4ae19d1";
   networking.hostName = "nixos"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -38,33 +43,25 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # getting video drivers
+  services.xserver.videoDrivers = [ "intel" ];
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  
-  hardware.graphics.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia = {
-    #enabling modesetting
-    modesetting.enable = true;
-
-    # turning off experiemental power management features
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-
-    open = false; # we want the proprietary one
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-
+  
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+	  layout = "us";
+	  variant = "";
   };
+
+  services.xserver.xkb.options = "caps:escape";
+  console.useXkbConfig = true;
+#  services.xserver.displayManager.gdm.wayland = false;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -89,21 +86,26 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  # All packages are coming from home-manager
   users.users.user = {
     isNormalUser = true;
     description = "user";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+    #  thunderbird
+    ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
-    
-  # Install steam
-  programs.steam.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Font packages
+  fonts.fontDir.enable = true;
+  fonts.packages = [
+    pkgs.nerd-fonts.agave
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -111,13 +113,27 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
-
-  fonts.fontDir.enable = true;
-  fonts.packages = [
-  	pkgs.nerd-fonts.agave
-  ];
-
+  # make caps escape
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  # services.openssh.enable = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -126,4 +142,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
 }

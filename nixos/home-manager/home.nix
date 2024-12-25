@@ -29,7 +29,6 @@
     pkgs.chromium
 
     # chat applications
-    pkgs.discord
     pkgs.signal-desktop
     
     # misc
