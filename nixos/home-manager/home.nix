@@ -69,7 +69,7 @@
     
     ".config/alacritty.toml".source = ../../alacritty.toml;
     ".config/nvim/init.lua".source = ../../nvim/init.lua;
-    ".config/tmux.conf".source = ../../tmux/tmux.conf;
+    ".tmux.conf".source = ../../tmux/tmux.conf;
 
     ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
         owner = "tmux-plugins";
