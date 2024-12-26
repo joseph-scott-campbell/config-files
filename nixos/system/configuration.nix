@@ -15,6 +15,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-2e2e70f9-a925-467c-8b4a-564eb4ae19d1".device = "/dev/disk/by-uuid/2e2e70f9-a925-467c-8b4a-564eb4ae19d1";
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -110,8 +113,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    linuxPackages.kernel
+    linuxPackages.kernelHeaders
   ];
   # make caps escape
   nix.settings.experimental-features = ["nix-command" "flakes"];
