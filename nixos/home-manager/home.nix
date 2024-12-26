@@ -24,6 +24,7 @@
     pkgs.ripgrep
     pkgs.file
     pkgs.parallel
+    pkgs.gnumake
 
     # general productivity
     pkgs.chromium
