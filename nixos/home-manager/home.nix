@@ -34,6 +34,7 @@
     # misc
     pkgs.keymapp
     pkgs.flameshot
+    pkgs.xclip
   ];
 
 
