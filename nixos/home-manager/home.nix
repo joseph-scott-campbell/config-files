@@ -25,17 +25,22 @@
     pkgs.file
     pkgs.parallel
     pkgs.gnumake
+    pkgs.screen
+    pkgs.nasm
+    pkgs.binutils
 
     # general productivity
     pkgs.chromium
 
     # chat applications
     pkgs.signal-desktop
+    pkgs.protonmail-desktop
     
     # misc
     pkgs.keymapp
     pkgs.flameshot
     pkgs.xclip
+    pkgs.neofetch
   ];
 
 
