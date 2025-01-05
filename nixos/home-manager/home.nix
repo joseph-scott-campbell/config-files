@@ -24,6 +24,10 @@
     pkgs.ripgrep
     pkgs.file
     pkgs.parallel
+    pkgs.tldr
+    pkgs.gcc
+    pkgs.nasm
+    pkgs.binutils
 
     # general productivity
     pkgs.chromium
@@ -31,10 +35,16 @@
     # chat applications
     pkgs.discord
     pkgs.signal-desktop
-    
+ 
+    # gaming
+    pkgs.lunar-client # for some reason nix does not have regular minecraft
+
     # misc
     pkgs.keymapp
     pkgs.flameshot
+    pkgs.xclip
+    pkgs.gnumake
+    pkgs.dig
   ];
 
 
