@@ -17,6 +17,8 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -93,7 +95,7 @@
   users.users.user = {
     isNormalUser = true;
     description = "user";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "input" ];
   };
 
   # Install firefox.
