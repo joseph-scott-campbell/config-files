@@ -25,9 +25,12 @@
     pkgs.file
     pkgs.parallel
     pkgs.tldr
+
+    # c and asm
     pkgs.gcc
     pkgs.nasm
     pkgs.binutils
+    pkgs.gdb
 
     # general productivity
     pkgs.chromium
