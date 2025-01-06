@@ -28,6 +28,7 @@
     pkgs.screen
     pkgs.nasm
     pkgs.binutils
+    pkgs.gdb
 
     # general productivity
     pkgs.chromium

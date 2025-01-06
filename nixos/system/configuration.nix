@@ -92,7 +92,7 @@
   users.users.user = {
     isNormalUser = true;
     description = "user";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout"];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -113,8 +113,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    linuxPackages.kernel
-    linuxPackages.kernelHeaders
   ];
   # make caps escape
   nix.settings.experimental-features = ["nix-command" "flakes"];
