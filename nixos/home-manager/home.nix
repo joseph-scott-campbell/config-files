@@ -34,6 +34,7 @@
 
     # general productivity
     pkgs.chromium
+    pkgs.kicad
 
     # chat applications
     pkgs.discord
