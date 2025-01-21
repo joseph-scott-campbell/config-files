@@ -46,9 +46,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # getting video drivers
-  services.xserver.videoDrivers = [ "intel" ];
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -64,13 +61,12 @@
 
   services.xserver.xkb.options = "caps:escape";
   console.useXkbConfig = true;
-#  services.xserver.displayManager.gdm.wayland = false;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -114,6 +110,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   ];
+
   # make caps escape
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
