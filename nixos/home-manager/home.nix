@@ -18,20 +18,24 @@
         echo "yes it is"
     '')
 
-    # development
+    # development environment
     pkgs.alacritty
-    pkgs.tmux
     pkgs.ripgrep
     pkgs.file
     pkgs.parallel
-    pkgs.gnumake
+    pkgs.gdb
+    pkgs.tmux
     pkgs.screen
+
+    # programming
+    pkgs.gnumake
     pkgs.nasm
     pkgs.binutils
-    pkgs.gdb
+    pkgs.python3
 
     # general productivity
     pkgs.chromium
+    pkgs.kicad
 
     # chat applications
     pkgs.signal-desktop
@@ -42,6 +46,7 @@
     pkgs.flameshot
     pkgs.xclip
     pkgs.neofetch
+    pkgs.superTuxKart
   ];
 
 
