@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+    env = import ./env.nix { inherit pkgs; };
+in
 {
   home.username = "user";
   home.homeDirectory = "/home/user";
@@ -97,6 +100,7 @@
   home.sessionVariables = {
      EDITOR = "nvim";
      MANPAGER = "nvim +Man!";
+     IRC_PASSWORD = env.IRC_PASSWORD;
   };
 
   # Let Home Manager install and manage itself.
