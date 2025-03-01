@@ -25,6 +25,7 @@
     pkgs.file
     pkgs.parallel
     pkgs.tldr
+    pkgs.python3
 
     # c and asm
     pkgs.gcc
@@ -35,20 +36,28 @@
     # general productivity
     pkgs.chromium
     pkgs.kicad
+    pkgs.inkscape
 
     # chat applications
     pkgs.discord
     pkgs.signal-desktop
- 
+    pkgs.ii
+    pkgs.gamemode
+
     # gaming
-    pkgs.lunar-client # for some reason nix does not have regular minecraft
+    pkgs.prismlauncher
 
     # misc
     pkgs.keymapp
     pkgs.flameshot
     pkgs.xclip
     pkgs.gnumake
+    pkgs.gnuchess
     pkgs.dig
+    pkgs.appimage-run
+    pkgs.htop
+    pkgs.magic-wormhole
+    pkgs.mpv
   ];
 
 
@@ -73,8 +82,7 @@
     };
   };
 
-
- # Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
@@ -92,7 +100,9 @@
         rev = "master";
         sha256 = "01ribl326n6n0qcq68a8pllbrz6mgw55kxhf9mjdc5vw01zjcvw5";
     };
-  };
+   
+ };
+
 
   # setup various plugin managers
   # vim plug for neovim

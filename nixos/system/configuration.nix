@@ -71,6 +71,34 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  virtualisation.libvirtd = {
+      enable = true;
+      qemu = {
+          package = pkgs.qemu_kvm;
+          runAsRoot = true;
+          swtpm.enable = true;
+          ovmf = {
+              enable = true;
+              packages = [(pkgs.OVMF.override {
+                      secureBoot = true;
+                      tpmSupport = true;
+                      }).fd];
+          };
+          networks = {
+            default = {
+                name = "default";
+                bridge = {
+                    name = "virbr0";
+                    stp = true;
+                    delay = 0;
+                };
+            };
+          };
+      };
+  };
+
+programs.virt-manager.enable = true;
+
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -95,11 +123,17 @@
   users.users.user = {
     isNormalUser = true;
     description = "user";
-    extraGroups = [ "networkmanager" "wheel" "dialout" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "input" "libvertd" ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
     
   # Install steam
   programs.steam.enable = true;
@@ -111,7 +145,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    pinentry-curses
   ];
 
   fonts.fontDir.enable = true;
