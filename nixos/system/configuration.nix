@@ -84,16 +84,6 @@
                       tpmSupport = true;
                       }).fd];
           };
-          networks = {
-            default = {
-                name = "default";
-                bridge = {
-                    name = "virbr0";
-                    stp = true;
-                    delay = 0;
-                };
-            };
-          };
       };
   };
 
