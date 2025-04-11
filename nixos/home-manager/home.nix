@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 
-let
-    env = import ./env.nix { inherit pkgs; };
-in
 {
   home.username = "user";
   home.homeDirectory = "/home/user";
@@ -29,20 +26,31 @@ in
     pkgs.gdb
     pkgs.tmux
     pkgs.screen
+    pkgs.magic-wormhole
 
     # programming
     pkgs.gnumake
     pkgs.nasm
     pkgs.binutils
     pkgs.python3
+    pkgs.platformio
 
     # general productivity
     pkgs.chromium
     pkgs.kicad
+    pkgs.protonmail-bridge
+    pkgs.w3m
+    pkgs.libreoffice-qt
 
     # chat applications
     pkgs.signal-desktop
-    pkgs.protonmail-desktop
+    #pkgs.protonmail-desktop
+
+    # ham radio
+    pkgs.direwolf
+    pkgs.js8call
+    pkgs.fldigi
+    pkgs.openjdk
     
     # misc
     pkgs.keymapp
@@ -50,6 +58,7 @@ in
     pkgs.xclip
     pkgs.neofetch
     pkgs.superTuxKart
+    pkgs.prismlauncher
   ];
 
 
@@ -74,8 +83,7 @@ in
     };
   };
 
-
- # Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
@@ -100,7 +108,6 @@ in
   home.sessionVariables = {
      EDITOR = "nvim";
      MANPAGER = "nvim +Man!";
-     IRC_PASSWORD = env.IRC_PASSWORD;
   };
 
   # Let Home Manager install and manage itself.

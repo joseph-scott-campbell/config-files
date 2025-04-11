@@ -18,6 +18,26 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.kernelPatches = [ {
+    name = "ax25-config";
+    patch = null;
+    extraConfig = ''
+      HAMRADIO y
+      AX25 m
+      AX25_DAMA_SLAVE y
+      NETROM m
+      ROSE m
+      MKISS m
+      6PACK m
+      BPQETHER m
+      BAYCOM_SER_FDX m
+      BAYCOM_SER_HDX m
+      YAM m
+    '';
+  } ];
+
+  boot.kernelModules = [ "kvm-amd" "ax25" "mkiss" ];
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -91,6 +111,7 @@
     extraGroups = [ "networkmanager" "wheel" "dialout"];
     packages = with pkgs; [
     #  thunderbird
+        neomutt
     ];
   };
 
@@ -109,7 +130,19 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    libax25
+    ax25-tools
+    gcc
   ];
+
+
+  environment.etc = {
+    "ax25/axports" = {
+        text = ''
+        ax0 AC1TR 19200 236 7 145.090 (1200 bps)
+        '';
+    };
+  };
 
   # make caps escape
   nix.settings.experimental-features = ["nix-command" "flakes"];
