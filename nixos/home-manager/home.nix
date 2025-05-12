@@ -35,6 +35,7 @@ in
     pkgs.nasm
     pkgs.binutils
     pkgs.python3
+    pkgs.ghc
 
     # general productivity
     pkgs.chromium
