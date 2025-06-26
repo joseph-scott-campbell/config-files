@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 
-let
-    env = import ./env.nix { inherit pkgs; };
-in
 {
   home.username = "user";
   home.homeDirectory = "/home/user";
@@ -21,6 +18,7 @@ in
         echo "yes it is"
     '')
 
+    pkgs.discord
     # development environment
     pkgs.alacritty
     pkgs.ripgrep
@@ -36,14 +34,19 @@ in
     pkgs.binutils
     pkgs.python3
     pkgs.ghc
+    pkgs.gcc
 
     # general productivity
     pkgs.chromium
     pkgs.kicad
+    pkgs.texliveFull
+    pkgs.ffmpeg
 
     # chat applications
     pkgs.signal-desktop
-    pkgs.protonmail-desktop
+    pkgs.neomutt
+    pkgs.libreoffice
+    pkgs.zathura
     
     # misc
     pkgs.keymapp
@@ -101,7 +104,6 @@ in
   home.sessionVariables = {
      EDITOR = "nvim";
      MANPAGER = "nvim +Man!";
-     IRC_PASSWORD = env.IRC_PASSWORD;
   };
 
   # Let Home Manager install and manage itself.
