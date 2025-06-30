@@ -31,7 +31,7 @@
     '')
 
 
-    pkgs.discord
+    
     # development environment
     pkgs.alacritty
     pkgs.ripgrep
@@ -39,7 +39,9 @@
     pkgs.parallel
     pkgs.gdb
     pkgs.tmux
-    pkgs.screen
+    pkgs.man-pages
+    pkgs.man-pages-posix
+    pkgs.glibcInfo
 
     # programming
     pkgs.gnumake
@@ -48,6 +50,7 @@
     pkgs.python3
     pkgs.ghc
     pkgs.gcc
+    pkgs.go
 
     # general productivity
     pkgs.chromium
@@ -68,6 +71,7 @@
     pkgs.xclip
     pkgs.neofetch
     pkgs.superTuxKart
+    pkgs.discord
   ];
 
 
