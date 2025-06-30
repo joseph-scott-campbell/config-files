@@ -22,6 +22,15 @@
         cd $OLD_PATH
     '')
 
+    (pkgs.writeShellScriptBin "update-system-flake" ''
+        OLD_PATH=$(pwd)
+        cd /home/user/git/config-files/nixos/system
+        nix flake update
+        sudo nixos-rebuild switch --flake .
+        cd $OLD_PATH
+    '')
+
+
     pkgs.discord
     # development environment
     pkgs.alacritty
