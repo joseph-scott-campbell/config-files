@@ -14,8 +14,12 @@
   nixpkgs.config.allowUnfree = true; # allowing proprietary software
   home.packages = [
     # sanity check program
-    (pkgs.writeShellScriptBin "is-home-manager-working" ''
-        echo "yes it is"
+    (pkgs.writeShellScriptBin "update-homemanager-flake" ''
+        OLD_PATH=$(pwd)
+        cd /home/user/git/config-files/nixos/home-manager
+        nix flake update
+        home-manager switch --flake .
+        cd $OLD_PATH
     '')
 
     pkgs.discord
@@ -41,6 +45,7 @@
     pkgs.kicad
     pkgs.texliveFull
     pkgs.ffmpeg
+    pkgs.yt-dlp
 
     # chat applications
     pkgs.signal-desktop
