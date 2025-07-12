@@ -19,9 +19,6 @@ vim.opt.backspace = { "indent", "eol", "start" }
 -- Set the color column at column 80
 vim.opt.colorcolumn = "80"
 
--- Make max width of line 80 columns
-vim.opt.textwidth = 80
-
 -- Set tab settings
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -75,6 +72,7 @@ require("lazy").setup({
         'nvim-telescope/telescope.nvim',
         'folke/tokyonight.nvim',
     	'christoomey/vim-tmux-navigator',
+        'ludovicchabant/vim-gutentags',
         -- add your plugins here
     },
     -- Configure any other settings here. See the documentation for more details.
@@ -86,7 +84,6 @@ require("lazy").setup({
 
 vim.cmd[[colorscheme tokyonight-night]]
 
-
 -- Keybinds
 vim.keymap.set('n', '<leader>]', '<cmd>bn<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>[', '<cmd>bp<CR>', { noremap = true, silent = true })
@@ -96,3 +93,4 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find f
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+vim.keymap.set('n', '<leader>ft', builtin.tags, { desc = 'Telescope tags' })

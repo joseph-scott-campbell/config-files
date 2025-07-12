@@ -18,31 +18,38 @@
         echo "yes it is"
     '')
 
-    # development
+    # development tools
     pkgs.alacritty
     pkgs.tmux
     pkgs.ripgrep
     pkgs.file
-    pkgs.parallel
     pkgs.tldr
-    pkgs.python3
+    pkgs.universal-ctags
+    pkgs.gnumake
+    pkgs.gdb
 
-    # c and asm
+    # compilers and interpreters
+    pkgs.python3
+    pkgs.ghc
+    pkgs.go
     pkgs.gcc
     pkgs.nasm
     pkgs.binutils
-    pkgs.gdb
+
+    # office
+    pkgs.inkscape
+    pkgs.neomutt
+    pkgs.protonmail-bridge
+    pkgs.texliveFull
+    pkgs.libreoffice
 
     # general productivity
     pkgs.chromium
     pkgs.kicad
-    pkgs.inkscape
 
     # chat applications
     pkgs.discord
     pkgs.signal-desktop
-    pkgs.ii
-    pkgs.gamemode
 
     # gaming
     pkgs.prismlauncher
@@ -51,13 +58,11 @@
     pkgs.keymapp
     pkgs.flameshot
     pkgs.xclip
-    pkgs.gnumake
-    pkgs.gnuchess
-    pkgs.dig
-    pkgs.appimage-run
     pkgs.htop
     pkgs.magic-wormhole
     pkgs.mpv
+    pkgs.pavucontrol
+    pkgs.ffmpeg
   ];
 
 
@@ -92,7 +97,7 @@
     
     ".config/alacritty.toml".source = ../../alacritty.toml;
     ".config/nvim/init.lua".source = ../../nvim/init.lua;
-    ".config/tmux.conf".source = ../../tmux/tmux.conf;
+    ".config/tmux/tmux.conf".source = ../../tmux/tmux.conf;
 
     ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
         owner = "tmux-plugins";
