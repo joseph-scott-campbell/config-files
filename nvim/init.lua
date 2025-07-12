@@ -40,6 +40,11 @@ vim.opt.fileformat = "unix"
 -- Enable 24-bit RGB color in the terminal
 vim.opt.termguicolors = true
 
+-- Generate tags in a home directory
+vim.g.gutentags_cache_dir = "~/.config/nvim/tags"
+
+-- Generate tags in directories with a Makefile and not just .git
+vim.g.gutentags_project_root = {'Makefile', '.git'}
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -83,12 +88,6 @@ require("lazy").setup({
 })
 
 vim.cmd[[colorscheme tokyonight-night]]
-
--- Have it generate .tags rather than tags
-vim.g.gutentags_tags_file = '.tags'
-
--- Generate tags in directories with a Makefile and not just .git
-vim.g.gutentags_project_root = {'Makefile'}
 
 -- Keybinds
 vim.keymap.set('n', '<leader>]', '<cmd>bn<CR>', { noremap = true, silent = true })
