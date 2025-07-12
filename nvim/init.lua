@@ -84,6 +84,12 @@ require("lazy").setup({
 
 vim.cmd[[colorscheme tokyonight-night]]
 
+-- Have it generate .tags rather than tags
+vim.g.gutentags_tags_file = '.tags'
+
+-- Generate tags in directories with a Makefile and not just .git
+vim.g.gutentags_project_root = {'Makefile'}
+
 -- Keybinds
 vim.keymap.set('n', '<leader>]', '<cmd>bn<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>[', '<cmd>bp<CR>', { noremap = true, silent = true })
