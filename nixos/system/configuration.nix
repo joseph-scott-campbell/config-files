@@ -59,8 +59,8 @@
   };
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -70,6 +70,7 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [pkgs.hplipWithPlugin];
 
   virtualisation.libvirtd = {
       enable = true;
@@ -90,7 +91,7 @@
 programs.virt-manager.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -113,8 +114,12 @@ programs.virt-manager.enable = true;
   users.users.user = {
     isNormalUser = true;
     description = "user";
-    extraGroups = [ "networkmanager" "wheel" "dialout" "input" "libvertd" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "input" "libvertd" "plugdev"];
   };
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", GROUP="plugdev", MODE="0666"
+  '';
 
   # Install firefox.
   programs.firefox.enable = true;
