@@ -148,6 +148,11 @@ programs.virt-manager.enable = true;
   	pkgs.nerd-fonts.agave
   ];
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    glibc
+  ];
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # This value determines the NixOS release from which the default

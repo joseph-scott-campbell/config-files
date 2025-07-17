@@ -29,6 +29,7 @@
     pkgs.gdb
     pkgs.man-pages
     pkgs.man-pages-posix
+    pkgs.gef
 
     # compilers and interpreters
     pkgs.python3
@@ -37,13 +38,17 @@
     pkgs.gcc
     pkgs.nasm
     pkgs.binutils
-
+    pkgs.rustc
+    pkgs.cargo
+    
     # office
     pkgs.inkscape
     pkgs.neomutt
     pkgs.protonmail-bridge
     pkgs.texliveFull
     pkgs.libreoffice
+    pkgs.neomutt
+    pkgs.w3m
 
     # general productivity
     pkgs.chromium
