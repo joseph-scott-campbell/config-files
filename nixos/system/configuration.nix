@@ -40,11 +40,8 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
+  #services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     #enabling modesetting
     modesetting.enable = true;
@@ -58,9 +55,10 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  programs.hyprland.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
