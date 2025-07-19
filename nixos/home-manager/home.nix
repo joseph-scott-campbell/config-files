@@ -26,10 +26,12 @@
     pkgs.tldr
     pkgs.universal-ctags
     pkgs.gnumake
-    pkgs.gdb
     pkgs.man-pages
     pkgs.man-pages-posix
     pkgs.gef
+    pkgs.gdb
+    pkgs.ghidra
+    pkgs.pwntools
 
     # compilers and interpreters
     pkgs.python3
