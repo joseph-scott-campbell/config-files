@@ -13,8 +13,7 @@
   # environment.
 
 home.pointerCursor = {
-    gtk.enable = true;
-    # x11.enable = true;
+    gtk.enable = true; # x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
     size = 16;
@@ -74,7 +73,6 @@ home.pointerCursor = {
 
     # misc
     pkgs.keymapp
-    pkgs.xclip
     pkgs.htop
     pkgs.magic-wormhole
     pkgs.mpv

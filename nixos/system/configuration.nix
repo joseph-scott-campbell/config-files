@@ -41,7 +41,7 @@
   };
 
   hardware.graphics.enable = true;
-  #services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     #enabling modesetting
     modesetting.enable = true;
@@ -59,12 +59,6 @@
   services.blueman.enable = true;
 
   programs.hyprland.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -145,6 +139,34 @@ programs.virt-manager.enable = true;
   fonts.packages = [
   	pkgs.nerd-fonts.agave
   ];
+
+services.greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.hyprland}/bin/hyprland";
+          user = "user";
+        };
+      };
+    };
+
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+    # Without these bootlogs will spam on screen
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
+  };
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
+
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [

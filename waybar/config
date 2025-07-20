@@ -20,9 +20,9 @@
     },
 
     "custom/nixos-logo": {
-        "format": "<span>󱄅</span>"
+        "format": "<span>󱄅</span>",
         "tooltip": false
-    }
+    },
 
     "clock": {
         "timezone": "America/New_York",
