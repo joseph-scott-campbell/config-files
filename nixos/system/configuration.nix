@@ -46,13 +46,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-  
   # Configure keymap in X11
   services.xserver.xkb = {
 	  layout = "us";
@@ -61,6 +54,11 @@
 
   services.xserver.xkb.options = "caps:escape";
   console.useXkbConfig = true;
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  programs.hyprland.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -110,6 +108,34 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   ];
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    glibc
+    zlib
+  ];
+
+  services.greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.hyprland}/bin/hyprland";
+          user = "user";
+       };
+     };
+   };
+
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+    # Without these bootlogs will spam on screen
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
+  };
 
   # make caps escape
   nix.settings.experimental-features = ["nix-command" "flakes"];
