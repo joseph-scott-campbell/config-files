@@ -3,7 +3,7 @@
     border-radius: 0;
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Liberation Mono;
-    min-height: 20px;
+    min-height: 10px;
 }
 
 window#waybar {
@@ -15,6 +15,13 @@ window#waybar.hidden {
 }
 
 #workspaces {
+    margin-right: 8px;
+    border-radius: 10px;
+    transition: none;
+    background: #383c4a;
+}
+
+#custom-nixos-logo{
     margin-right: 8px;
     border-radius: 10px;
     transition: none;

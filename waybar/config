@@ -1,6 +1,6 @@
 {
     "margin": "10 10 0 10",
-    "modules-left": ["custom/nixos-logo", "hyprland/workspaces"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
     "modules-right": ["pulseaudio", "custom/cpu", "custom/mem",  "tray"],
 
@@ -17,11 +17,6 @@
             "3": [],
             "4": [],
         },
-    },
-
-    "custom/nixos-logo": {
-        "format": "<span>󱄅</span>",
-        "tooltip": false
     },
 
     "clock": {
@@ -67,7 +62,7 @@
     },
     
     "tray": {
-        "icon-size": 16,
+        "icon-size": 10,
         "spacing": 0
     },
 }
