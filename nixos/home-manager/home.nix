@@ -58,6 +58,7 @@
     pkgs.texliveFull
     pkgs.ffmpeg
     pkgs.yt-dlp
+    pkgs.magic-wormhole
 
     # chat applications
     pkgs.signal-desktop
