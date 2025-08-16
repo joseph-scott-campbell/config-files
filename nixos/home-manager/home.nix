@@ -51,6 +51,7 @@
     pkgs.ghc
     pkgs.gcc
     pkgs.go
+    pkgs.rustup
 
     # general productivity
     pkgs.chromium
