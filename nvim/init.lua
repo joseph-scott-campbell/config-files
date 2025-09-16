@@ -19,9 +19,6 @@ vim.opt.backspace = { "indent", "eol", "start" }
 -- Set the color column at column 80
 vim.opt.colorcolumn = "80"
 
--- Make max width of line 80 columns
-vim.opt.textwidth = 80
-
 -- Set tab settings
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

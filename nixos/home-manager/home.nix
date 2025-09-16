@@ -42,6 +42,11 @@
     pkgs.man-pages
     pkgs.man-pages-posix
     pkgs.glibcInfo
+    
+    #pwn
+    pkgs.ghidra
+    pkgs.gef
+    pkgs.pwntools
 
     # programming
     pkgs.gnumake
@@ -74,6 +79,10 @@
     pkgs.neofetch
     pkgs.superTuxKart
     pkgs.discord
+    pkgs.slack
+
+    # games
+    pkgs.prismlauncher
   ];
 
 
