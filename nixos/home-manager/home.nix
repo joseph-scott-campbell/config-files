@@ -78,8 +78,8 @@
   programs = {
     git = {
       enable = true;
-      userName = "Scott Campbell";
-      userEmail = "scott@josephscottcampbell.com";
+      settings.user.name = "Scott Campbell";
+      settings.user.email = "scott@josephscottcampbell.com";
     };
   
     bash = {
